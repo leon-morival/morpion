@@ -24,6 +24,7 @@ const displayScore1 = document.getElementById("player1");
 const displayScore2 = document.getElementById("player2");
 displayScore1.textContent = 0;
 displayScore2.textContent = 0;
+// Check Win
 function checkWin() {
   let currentPlayerMoves =
     currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>' ? player1 : player2;
@@ -39,19 +40,16 @@ function checkWin() {
         alert("Player 2 à gagné");
         cleanGame();
       }
-
       displayScore1.textContent = scorePlayer1;
       displayScore2.textContent = scorePlayer2;
-
-      //   cleanGame();
       return true;
     }
   }
   return false;
 }
 const cells = document.querySelectorAll(".cell");
-
-function cleanGame(reset = false) {
+// CleanGame
+function cleanGame() {
   player1 = [];
   player2 = [];
   currentPlayer = '<i class="fa-solid fa-x fa-xl"></i>';
@@ -59,9 +57,12 @@ function cleanGame(reset = false) {
     cell.innerHTML = "";
   });
 }
+// ResetGame
 function resetGame() {
   displayScore1.textContent = 0;
   displayScore2.textContent = 0;
+  scorePlayer1 = 0;
+  scorePlayer2 = 0;
   player1 = [];
   player2 = [];
   currentPlayer = '<i class="fa-solid fa-x fa-xl"></i>';
@@ -69,17 +70,22 @@ function resetGame() {
     cell.innerHTML = "";
   });
 }
-
+let cellCount = 0;
 cells.forEach((cell) => {
   cell.addEventListener("click", () => {
     if (cell.innerHTML === "") {
       if (currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>') {
         player1.push(cell.id);
+        cellCount += 1;
       } else {
+        cellCount += 1;
         player2.push(cell.id);
       }
       cell.innerHTML = currentPlayer;
-
+      if (cellCount == 9) {
+        alert("Egalité");
+        cleanGame();
+      }
       if (!checkWin()) {
         switchPlayer();
       }
@@ -88,4 +94,3 @@ cells.forEach((cell) => {
     }
   });
 });
-
