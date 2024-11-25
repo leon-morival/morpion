@@ -20,7 +20,7 @@
     <!-- Le conteneur du texte centré -->
     <div class="text-center mb-6">
       <h1
-        class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
+        class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl"
       >
         Morpion
       </h1>
@@ -65,23 +65,49 @@
         class="cell border border-gray-600 flex items-center justify-center cursor-pointer hover:bg-gray-200"
       ></div>
     </div>
-    <!-- <div id="player1"></div>
-    <div id="player2"></div> -->
-    <button id="resetGame" onclick="resetGame()">Nouvelle partie</button>
-    <table class="table-auto border text-center mt-5">
-      <thead>
-        <tr class="border">
-          <th class="border">player1</th>
-          <th class="border">player2</th>
+    <button
+      class="bg-black mt-3 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded"
+      id="resetGame"
+      onclick="cleanGame(true)"
+    >
+      Nouvelle Partie
+    </button>
+
+    <table
+      class="table-auto border-collapse border border-gray-300 mx-auto text-center mt-5 bg-white shadow-lg rounded-lg"
+    >
+      <thead class="bg-gray-100">
+        <tr>
+          <th
+            class="border border-gray-300 px-4 py-2 text-gray-700 font-semibold uppercase tracking-wide"
+          >
+            Player 1
+          </th>
+          <th
+            class="border border-gray-300 px-4 py-2 text-gray-700 font-semibold uppercase tracking-wide"
+          >
+            Player 2
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td id="player1" class="border"></td>
-          <td id="player2" class="border"></td>
+          <td
+            id="player1"
+            class="border border-gray-300 px-4 py-2 text-gray-600"
+          >
+            --
+          </td>
+          <td
+            id="player2"
+            class="border border-gray-300 px-4 py-2 text-gray-600"
+          >
+            --
+          </td>
         </tr>
       </tbody>
     </table>
+
     <script src="./js/GestionTours.js"></script>
   </body>
 </html>
