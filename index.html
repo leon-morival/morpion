@@ -65,8 +65,23 @@
         class="cell border border-gray-600 flex items-center justify-center cursor-pointer hover:bg-gray-200"
       ></div>
     </div>
-    <div id="player1"></div>
-    <div id="player2"></div>
+    <!-- <div id="player1"></div>
+    <div id="player2"></div> -->
+    <button id="resetGame" onclick="resetGame()">Nouvelle partie</button>
+    <table class="table-auto border text-center mt-5">
+      <thead>
+        <tr class="border">
+          <th class="border">player1</th>
+          <th class="border">player2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="player1" class="border"></td>
+          <td id="player2" class="border"></td>
+        </tr>
+      </tbody>
+    </table>
     <script src="./js/GestionTours.js"></script>
   </body>
 </html>

@@ -30,22 +30,28 @@ function checkWin() {
 
   for (let solution of solutions) {
     if (solution.every((id) => currentPlayerMoves.includes(id.toString()))) {
-      console.log(
-        currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>'
-          ? (scorePlayer1 += 1)
-          : (scorePlayer2 += 1)
-      );
+      if (currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>') {
+        scorePlayer1 += 1;
+        alert("player 1 à gagné");
+        cleanGame();
+      } else {
+        scorePlayer2 += 1;
+        alert("Player 2 à gagné");
+        cleanGame();
+      }
+
       displayScore1.textContent = scorePlayer1;
       displayScore2.textContent = scorePlayer2;
 
-      cleanGame();
+      //   cleanGame();
       return true;
     }
   }
   return false;
 }
+const cells = document.querySelectorAll(".cell");
 
-function cleanGame() {
+function cleanGame(reset = false) {
   player1 = [];
   player2 = [];
   currentPlayer = '<i class="fa-solid fa-x fa-xl"></i>';
@@ -53,9 +59,16 @@ function cleanGame() {
     cell.innerHTML = "";
   });
 }
-
-// Sélectionner toutes les cellules
-const cells = document.querySelectorAll(".cell");
+function resetGame() {
+  displayScore1.textContent = 0;
+  displayScore2.textContent = 0;
+  player1 = [];
+  player2 = [];
+  currentPlayer = '<i class="fa-solid fa-x fa-xl"></i>';
+  cells.forEach((cell) => {
+    cell.innerHTML = "";
+  });
+}
 
 cells.forEach((cell) => {
   cell.addEventListener("click", () => {
