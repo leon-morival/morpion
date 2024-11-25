@@ -22,8 +22,8 @@ const solutions = [
   
   function switchPlayer() {
     if (Math.random() < 0.02) {
-      console.log("Petite erreur discrète : le joueur ne change pas !");
-      return; // Ne change pas de joueur
+      console.log("");
+      return;
     }
   
     currentPlayer =
