@@ -4,42 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Morpion</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/output.css" />
   </head>
-  
-  <body>
-    <p class="bg-black text-white">Morpion</p>
-    <div class="tic-tac-toe-board">
-      <div id="1" class="cell" onclick="changeImg('divImg1')">
-        <i id="divImg1" class="" forme=""></i>
-      </div>
-      <div id="2" class="cell" onclick="changeImg('divImg2')">
-        <i id="divImg2" class="" forme=""></i>
-      </div>
-      <div id="3" class="cell" onclick="changeImg('divImg3')">
-        <i id="divImg3" class="" forme=""></i>
-      </div>
-      <div id="4" class="cell" onclick="changeImg('divImg4')">
-        <i id="divImg4" class="" forme=""></i>
-      </div>
-      <div id="5" class="cell" onclick="changeImg('divImg5')">
-        <i id="divImg5" class="" forme=""></i>
-      </div>
-      <div id="6" class="cell" onclick="changeImg('divImg6')">
-        <i id="divImg6" class="" forme=""></i>
-      </div>
-      <div id="7" class="cell" onclick="changeImg('divImg7')">
-        <i id="divImg7" class="" forme=""></i>
-      </div>
-      <div id="8" class="cell" onclick="changeImg('divImg8')">
-        <i id="divImg8" class="" forme=""></i>
-      </div>
-      <div id="9" class="cell" onclick="changeImg('divImg9')">
-        <i id="divImg9" class="" forme=""></i>
-      </div>
+
+  <body
+    class="bg-gray-100 min-h-screen flex flex-col items-center justify-center"
+  >
+    <!-- Le conteneur du texte centré -->
+    <div class="text-center mb-6">
+      <h1
+        class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
+      >
+        Morpion
+      </h1>
     </div>
-    <script type="text/javascript" src="./js/gestionCase.js"></script>
+
+    <!-- Le tableau avec les cellules du morpion -->
+    <div class="grid grid-cols-3 w-72 h-72 shadow-2xl shadow-neutral-500">
+      <div
+        id="1"
+        class="cell border border-gray-600 flex items-center justify-center cursor-pointer hover:bg-gray-200"
+      ></div>
+      <div
+        id="2"
+        class="cell border border-gray-600 flex items-center justify-center cursor-pointer hover:bg-gray-200"
+      ></div>
+      <div
+        id="3"
+        class="cell border border-gray-600 flex items-center justify-center cursor-pointer hover:bg-gray-200"
+      ></div>
+      <div
+        id="4"
+        class="cell border border-gray-600 flex items-center justify-center cursor-pointer hover:bg-gray-200"
+      ></div>
+      <div
+        id="5"
+        class="cell border border-gray-600 flex items-center justify-center cursor-pointer hover:bg-gray-200"
+      ></div>
+      <div
+        id="6"
+        class="cell border border-gray-600 flex items-center justify-center cursor-pointer hover:bg-gray-200"
+      ></div>
+      <div
+        id="7"
+        class="cell border border-gray-600 flex items-center justify-center cursor-pointer hover:bg-gray-200"
+      ></div>
+      <div
+        id="8"
+        class="cell border border-gray-600 flex items-center justify-center cursor-pointer hover:bg-gray-200"
+      ></div>
+      <div
+        id="9"
+        class="cell border border-gray-600 flex items-center justify-center cursor-pointer hover:bg-gray-200"
+      ></div>
+    </div>
     <script src="./js/GestionTours.js"></script>
   </body>
 </html>
