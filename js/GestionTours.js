@@ -1,9 +1,34 @@
-// Ce code prend en compte qu'on 
+// Initialisation : le joueur actuel commence avec "X"
 let currentPlayer = "X";
 
-// Fonction pour changer de joueur
+// Fonction pour changer de joueur avec popup
 function switchPlayer() {
     currentPlayer = currentPlayer === "X" ? "O" : "X"; // Alterne entre X et O
+
+    // Crée dynamiquement une popup
+    const popup = document.createElement("div");
+    popup.textContent = `Changement de joueur !`;
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.padding = "20px";
+    popup.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+    popup.style.color = "white";
+    popup.style.fontSize = "18px";
+    popup.style.borderRadius = "10px";
+    popup.style.textAlign = "center";
+    popup.style.zIndex = "1000";
+    popup.style.boxShadow = "0px 4px 10px rgba(0, 0, 0, 0.5)";
+
+    // Ajoute la popup au corps du document
+    document.body.appendChild(popup);
+
+    // Supprime la popup après 1s
+    setTimeout(() => {
+        document.body.removeChild(popup);
+    }, 1000);
+
     console.log(`Changement de joueur : ${currentPlayer}`); // Log dans la console
 }
 
