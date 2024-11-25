@@ -5,20 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Morpion</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   
   <body>
+
+    <script type="text/javascript" src="./js/gestionCase.js"></script>
+    
     <p class="bg-black text-white">Morpion</p>
     <div class="tic-tac-toe-board">
-      <div id="1" class="cell"></div>
-      <div id="2" class="cell"></div>
-      <div id="3" class="cell"></div>
-      <div id="4" class="cell"></div>
-      <div id="5" class="cell"></div>
-      <div id="6" class="cell"></div>
-      <div id="7" class="cell"></div>
-      <div id="8" class="cell"></div>
-      <div id="9" class="cell"></div>
+      <div id="1" class="cell" onclick="changeImg('divImg1', null)">
+        <i id="divImg1" class="fa-regular fa-circle" forme=""></i>
+      </div>
+      <div id="2" class="cell" onclick="changeImg('divImg2', null)">
+        <i id="divImg2" class="" forme=""></i>
+      </div>
+      <div id="3" class="cell" onclick="changeImg('divImg3', null)">
+        <i id="divImg3" class="" forme=""></i>
+      </div>
+      <div id="4" class="cell" onclick="changeImg('divImg4', null)">
+        <i id="divImg4" class="" forme=""></i>
+      </div>
+      <div id="5" class="cell" onclick="changeImg('divImg5', null)">
+        <i id="divImg5" class="" forme=""></i>
+      </div>
+      <div id="6" class="cell" onclick="changeImg('divImg6', null)">
+        <i id="divImg6" class="" forme=""></i>
+      </div>
+      <div id="7" class="cell" onclick="changeImg('divImg7', null)">
+        <i id="divImg7" class="" forme=""></i>
+      </div>
+      <div id="8" class="cell" onclick="changeImg('divImg8', null)">
+        <i id="divImg8" class="" forme=""></i>
+      </div>
+      <div id="9" class="cell" onclick="changeImg('divImg9', null)">
+        <i id="divImg9" class="" forme=""></i>
+      </div>
     </div>
   </body>
 </html>
