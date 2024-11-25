@@ -12,13 +12,18 @@ const solutions = [
 let currentPlayer = '<i class="fa-solid fa-x fa-xl"></i>';
 let player1 = [];
 let player2 = [];
+let scorePlayer1 = 0;
+let scorePlayer2 = 0;
 function switchPlayer() {
   currentPlayer =
     currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>'
       ? '<i class="fa-solid fa-o fa-xl"></i>'
       : '<i class="fa-solid fa-x fa-xl"></i>';
 }
-
+const displayScore1 = document.getElementById("player1");
+const displayScore2 = document.getElementById("player2");
+displayScore1.textContent = 0;
+displayScore2.textContent = 0;
 function checkWin() {
   let currentPlayerMoves =
     currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>' ? player1 : player2;
@@ -27,22 +32,20 @@ function checkWin() {
     if (solution.every((id) => currentPlayerMoves.includes(id.toString()))) {
       console.log(
         currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>'
-          ? "Player 1 wins!"
-          : "Player 2 wins!"
+          ? (scorePlayer1 += 1)
+          : (scorePlayer2 += 1)
       );
-      alert(
-        currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>'
-          ? "Player 1 wins!"
-          : "Player 2 wins!"
-      );
-      resetGame();
+      displayScore1.textContent = scorePlayer1;
+      displayScore2.textContent = scorePlayer2;
+
+      cleanGame();
       return true;
     }
   }
   return false;
 }
 
-function resetGame() {
+function cleanGame() {
   player1 = [];
   player2 = [];
   currentPlayer = '<i class="fa-solid fa-x fa-xl"></i>';
