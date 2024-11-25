@@ -60,7 +60,6 @@ function checkWin() {
 
 function cleanGame(reset = false) {
   if (reset == true) {
-    alert("test");
     displayScore1.textContent = 0;
     displayScore2.textContent = 0;
     scorePlayer1 = 0;
@@ -70,8 +69,7 @@ function cleanGame(reset = false) {
   player2 = [];
   currentPlayer = '<i class="fa-solid fa-x fa-xl"></i>';
   cells.forEach((cell) => {
-    cell.innerHTML = ""; // Supprime tout contenu
-    cell.removeAttribute("forme"); // Supprime les attributs éventuels
+    cell.innerHTML = "";
   });
   cellCount = 0;
 }
