@@ -20,25 +20,22 @@ const solutions = [
   displayScore1.textContent = 0;
   displayScore2.textContent = 0;
   
+  // Change le joueur
   function switchPlayer() {
-    if (Math.random() < 0.02) {
-      console.log("");
-      return;
-    }
-  
     currentPlayer =
       currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>'
         ? '<i class="fa-solid fa-o fa-xl"></i>'
         : '<i class="fa-solid fa-x fa-xl"></i>';
   }
   
+  // Vérifie si un joueur a gagné
   function checkWin() {
     let currentPlayerMoves =
       currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>' ? player1 : player2;
   
     for (let solution of solutions) {
       if (solution.every((id) => currentPlayerMoves.includes(id.toString()))) {
-        // Utiliser setTimeout pour retarder l'alerte et permettre le rendu
+        // Utiliser setTimeout pour permettre le rendu de la dernière forme
         setTimeout(() => {
           if (currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>') {
             scorePlayer1 += 1;
@@ -51,9 +48,8 @@ const solutions = [
           displayScore1.textContent = scorePlayer1;
           displayScore2.textContent = scorePlayer2;
   
-          // Nettoyer le jeu après avoir annoncé le gagnant
-          cleanGame();
-        }, 100); // Retard de 100 ms
+          cleanGame(); // Réinitialise la grille après la victoire
+        }, 100); // Légère attente pour permettre le rendu
   
         return true;
       }
@@ -61,35 +57,34 @@ const solutions = [
     return false;
   }
   
+  // Nettoyer la grille pour une nouvelle partie
   function cleanGame() {
     player1 = [];
     player2 = [];
     currentPlayer = '<i class="fa-solid fa-x fa-xl"></i>';
     cells.forEach((cell) => {
-      cell.innerHTML = ""; // Supprime tout contenu
-      cell.removeAttribute("forme"); // Supprime les attributs éventuels
+      cell.innerHTML = ""; // Supprime le contenu HTML de chaque cellule
+      cell.removeAttribute("forme"); // Supprime les attributs associés
     });
     cellCount = 0; // Réinitialise le compteur des coups joués
   }
   
+  // Réinitialiser le jeu entier (scores et grille)
   function resetGame() {
     displayScore1.textContent = 0;
     displayScore2.textContent = 0;
     scorePlayer1 = 0;
     scorePlayer2 = 0;
-    cleanGame(); // Nettoie aussi la grille
+    cleanGame();
   }
   
   let cellCount = 0;
   const cells = document.querySelectorAll(".cell");
   
+  // Gestion des clics sur les cellules
   cells.forEach((cell) => {
     cell.addEventListener("click", () => {
-      console.log(`Cellule cliquée : ${cell.id}, contenu : ${cell.innerHTML}`);
-  
       if (cell.innerHTML === "") {
-        console.log(`Placement du joueur ${currentPlayer} dans la cellule ${cell.id}`);
-  
         if (currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>') {
           player1.push(cell.id);
           cellCount += 1;
@@ -98,19 +93,21 @@ const solutions = [
           cellCount += 1;
         }
   
-        cell.innerHTML = currentPlayer;
+        cell.innerHTML = currentPlayer; // Place la forme dans la cellule
   
+        // Attendre que le rendu soit fait avant de vérifier la victoire
         setTimeout(() => {
           if (checkWin()) {
-            return;
+            return; // Arrête la logique si un joueur a gagné
           }
+  
           if (cellCount === 9) {
             alert("Égalité !");
             cleanGame();
           } else {
             switchPlayer();
           }
-        }, 50);
+        }, 50); // Légère attente pour le rendu
       } else {
         console.log("Cellule déjà utilisée !");
       }
