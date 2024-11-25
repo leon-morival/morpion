@@ -48,14 +48,14 @@ cells.forEach(cell => {
     });
 });
 */
-function changeImg(id, turn)
+function changeImg(id)
 {
     forme=document.getElementById(id).getAttribute("forme");
     circle="fa-regular fa-circle";
     cross="fa-solid fa-x";
 
     if(forme==""){
-        if(turn=="O"){
+        if(currentPlayer=="O"){
             document.getElementById(id).className=circle;
             document.getElementById(id).setAttribute("forme", "circle");
         }else{
