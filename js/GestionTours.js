@@ -1,35 +1,71 @@
-// Initialiser le joueur actuel avec l'icône "X" (utilisation de Font Awesome)
-let currentPlayer = '<i class="fa-solid fa-x fa-xl"></i>';
-let player1 = []; // Tableau pour les cases jouées par le joueur 1 (X)
-let player2 = []; // Tableau pour les cases jouées par le joueur 2 (O)
+const solutions = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [1, 4, 7],
+  [2, 5, 8],
+  [3, 6, 9],
+  [1, 5, 9],
+  [3, 5, 7],
+];
 
-// Fonction pour changer de joueur
+let currentPlayer = '<i class="fa-solid fa-x fa-xl"></i>';
+let player1 = [];
+let player2 = [];
 function switchPlayer() {
-  // Alterner entre "X" (croix) et "O" (cercle) en utilisant les icônes Font Awesome
   currentPlayer =
     currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>'
       ? '<i class="fa-solid fa-o fa-xl"></i>'
-      : '<i class="fa-solid fa-x fa-xl"></i>'; // Alterne entre X et O
+      : '<i class="fa-solid fa-x fa-xl"></i>';
 }
 
-// Sélectionner toutes les cellules
+function checkWin() {
+  let currentPlayerMoves =
+    currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>' ? player1 : player2;
+
+  for (let solution of solutions) {
+    if (solution.every((id) => currentPlayerMoves.includes(id.toString()))) {
+      console.log(
+        currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>'
+          ? "Player 1 wins!"
+          : "Player 2 wins!"
+      );
+      alert(
+        currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>'
+          ? "Player 1 wins!"
+          : "Player 2 wins!"
+      );
+      resetGame();
+      return true;
+    }
+  }
+  return false;
+}
+
+function resetGame() {
+  player1 = [];
+  player2 = [];
+  currentPlayer = '<i class="fa-solid fa-x fa-xl"></i>';
+  cells.forEach((cell) => {
+    cell.innerHTML = "";
+  });
+}
+
 const cells = document.querySelectorAll(".cell");
 
-// Ajouter un écouteur de clic à chaque cellule
 cells.forEach((cell) => {
   cell.addEventListener("click", () => {
-    // Si la cellule est vide, on peut y jouer
     if (cell.innerHTML === "") {
-      // Ajouter l'ID de la cellule dans le tableau du joueur actuel
       if (currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>') {
         player1.push(cell.id);
-        console.log("Joueur 1 (X) joue : " + player1);
       } else {
         player2.push(cell.id);
       }
       cell.innerHTML = currentPlayer;
 
-      switchPlayer();
+      if (!checkWin()) {
+        switchPlayer();
+      }
     } else {
       console.log("Cellule déjà utilisée !");
     }
