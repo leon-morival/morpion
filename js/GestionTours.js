@@ -21,11 +21,6 @@ const solutions = [
   displayScore2.textContent = 0;
   
   function switchPlayer() {
-    if (Math.random() < 0.02) {
-      console.log("");
-      return;
-    }
-  
     currentPlayer =
       currentPlayer === '<i class="fa-solid fa-x fa-xl"></i>'
         ? '<i class="fa-solid fa-o fa-xl"></i>'
@@ -100,7 +95,7 @@ const solutions = [
   
         cell.innerHTML = currentPlayer;
   
-        setTimeout(() => {
+        (() => {
           if (checkWin()) {
             return;
           }
