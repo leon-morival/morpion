@@ -3,8 +3,8 @@
 git clone
 dans le projet
 
-```
-bash
+```bash
+
 npm install
 npm run build:css
 npx live-server ./
